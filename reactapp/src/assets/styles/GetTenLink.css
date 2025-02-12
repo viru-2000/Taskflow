@@ -1,0 +1,91 @@
+/* Container Styles */
+.get-ten-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+/* Card Layout */
+.get-ten-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 500px;
+}
+
+/* Title */
+.get-ten-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Description */
+.get-ten-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* Input Section */
+.get-ten-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.get-ten-input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.get-ten-button {
+    background-color: #008060;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.get-ten-button:hover {
+    background-color: #006644;
+}
+
+/* Referral Link Section */
+.get-ten-link-container {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.get-ten-link-input {
+    padding: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.get-ten-copy-button {
+    background-color: #008060;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.get-ten-copy-button:hover {
+    background-color: #006644;
+}

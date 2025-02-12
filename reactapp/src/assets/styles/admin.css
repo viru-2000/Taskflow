@@ -1,0 +1,172 @@
+/* Sidebar */
+.sidebar {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  overflow-y: auto; /* Add scroll for long menus */
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #3498db; /* Highlight on hover */
+  color: #fff;
+}
+
+.sidebar ul li a.active {
+  background-color: #2980b9; /* Active link highlight */
+  color: #fff;
+}
+
+/* Logout button */
+.logout-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 30px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  background-color: #e53935;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  margin-left: 260px;
+  padding: 20px;
+  background-color: #ecf0f1;
+  min-height: 100vh;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: rgba(83, 119, 226, 0.686) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.card.blue {
+  background-color: #3498db;
+}
+
+.card.green {
+  background-color: #2ecc71;
+}
+
+.card.red {
+  background-color: #e74c3c;
+}
+
+.card.yellow {
+  background-color: #f1c40f;
+}
+
+/* Service Grid */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.service {
+  background-color: #fff;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.service:hover {
+  transform: scale(1.05); /* Hover effect for services */
+}
+
+.service p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .dashboard-content {
+    margin-left: 220px;
+  }
+
+  .card {
+    flex: 1 1 100%;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .dashboard-content {
+    margin-left: 0;
+  }
+
+  .logout-btn {
+    font-size: 0.9rem;
+  }
+}

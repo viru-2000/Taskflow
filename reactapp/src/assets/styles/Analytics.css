@@ -1,0 +1,54 @@
+/* Analytics Component Styles */
+.analytics-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .analytics-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .analytics-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .analytics-card h3 {
+    font-size: 1.4rem;
+    color: #007acc;
+    margin-bottom: 10px;
+  }
+  
+  .analytics-card p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 0;
+  }
+  
+  .analytics-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
+  
+  .analytics-card ul li {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  

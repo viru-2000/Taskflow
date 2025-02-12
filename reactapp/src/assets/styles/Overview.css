@@ -1,0 +1,80 @@
+/* src/assets/styles/Overview.css
+
+.overview-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .overview-heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .overview-summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  .overview-card {
+    flex: 1;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  .overview-card h3 {
+    margin: 0 0 10px;
+    color: #555;
+  }
+  
+  .overview-card p {
+    font-size: 16px;
+    color: #777;
+  }
+   */
+
+
+   /* Overview Component Styles */
+.dashboard-overview {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-overview h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+
+.dashboard-overview p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.dashboard-overview > div {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-overview h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #007acc;
+}
+
+.dashboard-overview p {
+  margin: 0;
+}

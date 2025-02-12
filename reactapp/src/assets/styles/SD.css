@@ -1,0 +1,170 @@
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: #007f5f;
+}
+
+a:hover {
+  color: #005f43;
+  text-decoration: underline;
+}
+
+/* Header Section */
+header {
+  background-color: #f3f9f4;
+  padding: 60px 20px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #93eabe;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+header button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007f5f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+header button:hover {
+  background-color: #005f43;
+}
+
+/* Service Info Section */
+section {
+  padding: 10px -10px;
+  margin: 5px auto;
+  max-width: 1250px;
+}
+
+section h2 {
+  font-size: 2rem;
+  color: #003e1f;
+  border-bottom: 2px solid #007f5f;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+section p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+
+/* How It Works Section */
+.how-it-works {
+  background-color: #f3f9f4;
+  padding: 40px 20px;
+  border-radius: 8px;
+}
+
+.how-it-works div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.how-it-works img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.how-it-works h3 {
+  font-size: 1.2rem;
+  color: #003e1f;
+  margin-bottom: 10px;
+}
+
+.how-it-works p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* FAQ Section */
+.faq-section {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 40px 0;
+}
+
+.faq-section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #003e1f;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.faq-section p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 10px;
+  color: #555;
+  display: none; /* Hidden by default */
+}
+
+.faq-section h3:hover {
+  color: #007f5f;
+}
+
+.faq-section h3.active {
+  color: #007f5f;
+}
+
+.faq-section h3.active + p {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  section {
+    padding: 20px;
+  }
+}

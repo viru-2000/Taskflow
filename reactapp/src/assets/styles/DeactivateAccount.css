@@ -1,0 +1,40 @@
+.form-component {
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .form-component h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+  }
+  
+  .form-component p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .deactivate-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .deactivate-button:hover {
+    background-color: #c9302c;
+  }
+  

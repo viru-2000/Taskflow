@@ -1,0 +1,33 @@
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #008060;
+    padding: 1rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #006644;
+}
+
+/* Add a unique style to the link for "Get $10" */
+.navbar a[href="/get$10"] {
+    background-color: #00aaff; /* Change color for the specific link */
+    color: #fff; /* Ensure text remains white for visibility */
+}
+
+.navbar a[href="/get$10"]:hover {
+    background-color: #0088cc; /* Darker shade for hover effect */
+}

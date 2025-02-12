@@ -1,0 +1,261 @@
+/* General Styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  width: 100%; /* Set width to 100% */
+  height: 100%;
+}
+
+/* Container for the main content */
+.container {
+  width: 100%; /* Set width to 100% */
+}
+
+/* Center text across elements */
+.text-center {
+  text-align: center;
+}
+
+/* Padding for sections */
+.py-5 {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+/* Light background */
+.bg-light {
+  background-color: #fefefe;
+}
+
+/* Bold text style */
+.fw-bold {
+  font-weight: bold;
+}
+
+/* Form and Search Section */
+.input-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.input-group .form-control {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #0e0e0e;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.input-group .btn {
+  padding: 0.8rem 1.25rem;
+  border: none;
+  background-color: #198754;
+  color: black;
+  cursor: pointer;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.input-group .btn:hover {
+  background-color: #157347;
+}
+
+/* Service Categories Section */
+.service-categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 2rem;
+}
+
+.service-categories .category {
+  text-align: center;
+  flex: 1 1 200px;
+}
+
+.category button {
+  color: black;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+}
+
+.category button:hover {
+  background-color: #f8f9fa;
+}
+
+/* Popular Projects Section */
+.popular-projects {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 2rem;
+}
+.project-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  height: 100%; /* Ensure all cards stretch evenly */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px; /* Uniform image size */
+  object-fit: cover;
+}
+
+.project-card .card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Makes sure all cards stretch */
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.project-card .card-text {
+  flex-grow: 1; /* Ensures equal spacing for text */
+}
+
+.project-card button {
+  margin-top: auto; /* Pushes the button to the bottom */
+}
+
+/* Ratings Section */
+.ratings-section {
+  padding: 50px 0;
+  /* background-color: #f8f9fa;  Remove this line */
+}
+
+.ratings-section .rating-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* background-color: #fff;  Remove this line */
+  padding: 15px;
+  max-width: 300px;
+  margin: 15px;
+}
+
+.ratings-section .rating-card h5 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.ratings-section .rating-card p {
+  color: #6c757d;
+}
+
+.ratings-section .rating-card a {
+  color: #28a745;
+}
+
+/* Trustpilot Section */
+.trustpilot-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.trustpilot-section img {
+  width: 600px;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #28a745;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.home-search {
+  width: 620px; /* Adjust the width as needed */
+  height: 15px;
+  font-size: 20px; /* Smaller font size */
+  margin-left: 18rem;
+  margin-bottom: 5rem;
+}
+
+.home-search-btn {
+  height: 25px !important;
+  font-size: 20px !important; /* Adjust button text size */
+  border: #198754;
+  justify-content: center;
+}
+
+/* Home Image  */
+
+.hero-section {
+  background-image: url("/src/assets/Images/HomePage.png"); /* Path to your background image */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps the background image fixed during scroll */
+  position: relative;
+  color: white; /* Ensures the text is white */
+}
+
+.title-home {
+  background-image: url("/src/assets/Images/HomeMain.png");
+  background-size: cover;
+  height: 600px;
+
+  border-radius: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.title-home2 {
+  padding: 10px;
+
+  width: 80%; /* You can adjust the width */
+  max-width: 600px; /* Ensures the text block does not stretch too wide */
+  margin: auto;
+  z-index: 3;
+  color: #013a08;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.text-white {
+  color: white !important;
+}
+
+/* Assembly Cards */
+
+.assembly-card {
+  color: black;
+  margin-top: 10px;
+  padding: 5px 10px;
+  /* border: 1px solid #99bddc; */
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  gap: 2px;
+}
+
+.pps {
+  color: #0e0e0e !important;
+}
+.card {
+  flex-grow: 1;
+}

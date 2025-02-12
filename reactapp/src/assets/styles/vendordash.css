@@ -1,0 +1,48 @@
+/* src/assets/styles/Account.css or VendorDashboard.css */
+.vendor-dashboard-container {
+    display: flex;
+  }
+  
+  .vendor-dashboard-sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+  }
+  
+  .vendor-dashboard-sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .vendor-dashboard-sidebar nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .vendor-dashboard-sidebar nav ul li {
+    margin: 20px 0;
+  }
+  
+  .vendor-dashboard-sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+  }
+  
+  .vendor-dashboard-sidebar nav ul li a:hover {
+    color: #3498db;
+  }
+  
+  .vendor-dashboard-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #ecf0f1;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  

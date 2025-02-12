@@ -1,0 +1,46 @@
+.account-component {
+    display: flex;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f7fafc;
+  }
+  
+  .account-sidebar {
+    width: 20%;
+    background-color: black;
+    color: whitesmoke;
+    border-right: 1px solid #e2e8f0;
+    padding: 20px;
+  }
+  
+  .account-sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .account-sidebar ul {
+    list-style: none;
+    padding: 0;
+    
+  }
+  
+  .account-sidebar li {
+    margin-bottom: 1rem;
+  }
+  
+  .account-sidebar a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 500;
+  }
+  
+  .account-sidebar a:hover {
+    color: #3182ce;
+  }
+  
+  .account-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f7fafc;
+  }
+  

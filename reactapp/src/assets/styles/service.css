@@ -1,0 +1,115 @@
+/* General Reset */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+a,
+input,
+button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Services Page */
+.serviceline {
+  text-align: center;
+  background: url("/src/assets/Images/ServicesBanner.jpg")
+    center/cover no-repeat;
+  padding: 150px 20px;
+  color: #fff;
+  height: 41rem;
+  
+}
+
+.serviceline h1 {
+  margin: 0;
+  font-size: 25px;
+  color: rgb(79, 78, 78);
+}
+
+.services-section {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+.services-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  color: #007bff;
+}
+
+.service-category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.service-card {
+  flex: 1 1 calc(33.333% - 20px); /* 3 cards per row */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: calc(33.333% - 20px); /* Ensure they stay within the row */
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.service-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.service-card h3 {
+  font-size: 1.3em;
+  margin: 10px 15px;
+  color: #007bff;
+}
+
+.service-card h3:hover {
+  color: #0056b3;
+}
+
+.service-card p {
+  font-size: 1em;
+  margin: 10px 15px;
+  color: #555;
+}
+
+.service-card ul {
+  list-style: none;
+  padding: 0 15px 15px;
+  margin: 0;
+}
+
+.service-card ul li {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.service-card ul li:hover {
+  color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .service-category {
+    grid-template-columns: 1fr;
+  }
+
+  header nav {
+    text-align: center;
+  }
+}

@@ -1,0 +1,57 @@
+/* Sidebar container styles */
+.sidebar-filters {
+    max-width: 300px;
+    min-width: 200px;
+  }
+  
+  /* Dropdown menu styling */
+  .dropdown-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 12px; /* Rounded corners for the dropdown */
+  }
+  
+  /* Individual list items styling */
+  .dropdown-menu li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Radio button styling */
+  input[type="radio"] {
+    margin-right: 0.5rem; /* Add space between the radio button and label text */
+  }
+  
+  /* Button to toggle dropdown */
+  .btn-secondary {
+    border-radius: 12px; /* Rounded corners for the button */
+  }
+  
+  /* Additional styles for the sidebar */
+  .bg-light {
+    background-color: #f8f9fa !important;
+  }
+  
+  .p-4 {
+    padding: 1.5rem;
+  }
+  
+  .border {
+    border: 1px solid #ddd;
+  }
+  
+  .rounded {
+    border-radius: 8px;
+  }
+  
+  .shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+  
+  .text-primary {
+    color: #007bff;
+  }
+  

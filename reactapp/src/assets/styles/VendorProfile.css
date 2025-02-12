@@ -1,0 +1,98 @@
+/* Vendor Profile Container */
+.vendor-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #f9f9f9;
+}
+
+/* Title Styling */
+.vendor-title {
+  text-align: center;
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+/* Details Section */
+.vendor-details {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjust spacing between avatar and info */
+}
+
+/* Avatar Section */
+.vendor-avatar {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+
+}
+
+.avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 24px;
+}
+
+/* Info Section */
+.vendor-info {
+  flex: 1;
+}
+
+.vendor-info p {
+  margin: 8px 0;
+  font-size: 18px;
+  color: #555;
+}
+
+.vendor-info p strong {
+  color: #333;
+  margin-right: 5px;
+}
+
+/* Input Fields for Editing */
+.vendor-info input {
+  margin: 5px 0;
+  padding: 5px;
+  font-size: 16px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.vendor-info input:focus {
+  border-color: rgba(6, 160, 237, 0.644);
+  outline: none;
+  box-shadow: 0 0 5px rgba(6, 160, 237, 0.5);
+}
+
+/* Button Section */
+.edit-button {
+  display: block;
+  margin: 20px auto 0; /* Centered horizontally, positioned at the bottom */
+  padding: 10px 20px;
+  background-color: rgba(6, 160, 237, 0.644);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: skyblue;
+}

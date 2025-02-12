@@ -1,0 +1,79 @@
+   .account-container {
+    max-width: 600px; /* Increased width */
+    margin: auto;
+    padding: 30px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  }
+  
+  .account-title {
+    text-align: center;
+    font-size: 30px; /* Increased font size */
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+  
+  .account-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .account-avatar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .avatar-placeholder {
+    width: 80px; /* Increased width */
+    height: 80px; /* Increased height */
+    background-color: #e0e0e0;
+    border-radius: 50%;
+  }
+  
+  .account-info {
+    flex: 2;
+    margin-left: 15px; /* Increased margin */
+  }
+  
+  .account-info p {
+    margin: 8px 0; /* Adjusted spacing */
+    font-size: 20px; /* Increased font size */
+    color: #555;
+  }
+  
+  .edit-button {
+    padding: 8px 15px; /* Adjusted padding */
+    background-color: rgba(6, 160, 237, 0.644);
+    color:  white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Slightly larger font */
+  }
+  
+  .edit-button:hover {
+    background-color: skyblue;
+  }
+  
+  .logout-button {
+    display: block;
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px; /* Increased padding */
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Increased font size */
+  }
+  
+  .logout-button:hover {
+    background-color: #c9302c;
+  }
+  
