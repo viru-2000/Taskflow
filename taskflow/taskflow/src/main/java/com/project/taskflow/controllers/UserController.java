@@ -1,25 +1,27 @@
 package com.project.taskflow.controllers;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.project.taskflow.models.Role;
 import com.project.taskflow.models.User;
 import com.project.taskflow.repositories.UserRepository;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     @GetMapping
@@ -27,7 +29,7 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         System.out.println("Received User: " + user);
         
@@ -35,20 +37,22 @@ public class UserController {
         if (user.getRole() == null) {
             user.setRole(Role.USER);
         }
-
+        
+        // Hash the password before saving
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        
         User savedUser = userRepository.save(user);
         return ResponseEntity.ok(savedUser);
     }
-    
-    @PostMapping("/login")
-	public String login(@RequestBody User user) {
-		User existingUser = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
-		if (existingUser != null) {
-			return "Login successful";
-		} else {
-			return "Login failed";
-		}
-	}
- 
 
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody User user) {
+        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+        
+        if (existingUser.isPresent() && 
+            passwordEncoder.matches(user.getPassword(), existingUser.get().getPassword())) {
+            return ResponseEntity.ok("Login successful!");
+        }
+        return ResponseEntity.status(401).body("Invalid email or password");
+    }
 }

@@ -13,6 +13,13 @@ public class Service {
     private String name;
     private String description;
     
+    
+    
+	public Service() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Service(Long id, String name, String description) {
 		super();
 		this.id = id;
