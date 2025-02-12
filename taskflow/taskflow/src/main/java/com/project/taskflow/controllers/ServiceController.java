@@ -75,6 +75,7 @@ public class ServiceController {
     @PostMapping
     public ResponseEntity<Service> createService(@RequestBody Service service) {
         Service savedService = serviceRepository.save(service);
+        System.out.print(service);
         return new ResponseEntity<>(savedService, HttpStatus.CREATED);
     }
 }

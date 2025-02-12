@@ -5,32 +5,27 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const ProviderServices = () => {
- 
-    
-  
-  const [description, setDescription] = useState("");
-  const[service, setService] = useState("");
 
-  const handleSubmit = async () => {
+  const[name, setName] = useState("");
+  const [description, setDescription] = useState("");
+
+  const handleSubmit = async() => {
     try {
       const response = await axios.post('http://localhost:8080/api/services', {
-        service,
+        name,
         description
       });
-
       console.log(response.data); // Handle success response
     } catch (error) {
       console.error('Login failed:', error.message);
     }
   };
 
- 
-
   return (
     <div className="container mt-5 d-flex justify-content-center">
       <div className="col-md-8">
         <h1 className="text-center">Service Request Form</h1>
-        <form onSubmit={handleSubmit} className="mt-4">
+        <form className="mt-4">
           {/* Name */}
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
@@ -39,10 +34,9 @@ const ProviderServices = () => {
             <input
               type="text"
               id="name"
-              name="service"
               className="form-control"
-              value={service}
-              onChange={(e) => setService(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
@@ -54,8 +48,7 @@ const ProviderServices = () => {
             </label>
             <input
               type="text"
-              id="shopName"
-              name="description"
+              id="description"
               className="form-control"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -64,7 +57,7 @@ const ProviderServices = () => {
           </div>
 
           <div className="text-center mt-4">
-            <button type="submit" className="btn btn-success">
+            <button onClick={handleSubmit} type="button" className="btn btn-success">
               Submit
             </button>
           </div>
