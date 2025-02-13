@@ -20,7 +20,7 @@ public class ServiceController {
         this.serviceRepository = serviceRepository;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Service> getAllServices() {
         return serviceRepository.findAll();
     }

@@ -9,7 +9,7 @@ const ProviderServices = () => {
   const [description, setDescription] = useState("");
   const [services, setServices] = useState([]);
   const [selectedService, setSelectedService] = useState("");
-  const [subCategory, setSubCategory] = useState("");
+  const [subCategoryName, setSubCategoryName] = useState("");
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -24,26 +24,52 @@ const ProviderServices = () => {
   }, []);
 
   const handleServiceSubmit = async () => {
+    if (!name || !description) {
+      alert("Service name and description are required.");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:8080/api/services", {
         name,
         description,
       });
-      console.log(response.data);
+
+      console.log("Service added:", response.data);
+
+      // Clear form fields
+      setName("");
+      setDescription("");
+
+      // Refresh services list
+      setServices([...services, response.data]); // Ensure new service is added
     } catch (error) {
       console.error("Service submission failed:", error.message);
+      alert("Failed to add service. Please try again.");
     }
   };
 
   const handleSubCategorySubmit = async () => {
+    if (!selectedService || !subCategoryName) {
+      alert("Please select a service and enter a subcategory name.");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:8080/api/subcategories/add", {
-        subCategory,
         serviceId: selectedService,
+        name: subCategoryName, // Using correct variable
+        subCategory: subCategoryName, // Ensuring correct mapping
       });
-      console.log(response.data);
+
+      console.log("Subcategory added:", response.data);
+
+      // Clear input fields
+      setSelectedService("");
+      setSubCategoryName("");
     } catch (error) {
       console.error("Subcategory submission failed:", error.message);
+      alert("Failed to add subcategory. Please try again.");
     }
   };
 
@@ -105,8 +131,8 @@ const ProviderServices = () => {
               type="text"
               id="subCategory"
               className="form-control"
-              value={subCategory}
-              onChange={(e) => setSubCategory(e.target.value)}
+              value={subCategoryName}
+              onChange={(e) => setSubCategoryName(e.target.value)}
               required
             />
           </div>
