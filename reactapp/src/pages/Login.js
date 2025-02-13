@@ -1,132 +1,102 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const [fullName, setFullName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [currentForm, setCurrentForm] = useState("login");
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    role: "USER",
+  });
   const [error, setError] = useState("");
-  const [currentForm, setCurrentForm] = useState("options");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("token");
-    if (storedUser) {
-      navigate("/userhome"); // Redirect to homepage if already logged in
-    }
-  }, [navigate]);
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
 
-  // **🔹 Handle Login**
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:8080/api/users/login", {
-        email,
-        password,
+        email: userData.email,
+        password: userData.password,
       });
-
-      localStorage.setItem("token", response.data.token); 
-      localStorage.setItem("userRole", response.data.role); 
-
-      toast.success("Login successful!", { autoClose: 2000 });
-
-      setTimeout(() => {
-        navigate(
-          response.data.role === "ADMIN"
-            ? "/admin"
-            : response.data.role === "VENDOR"
-            ? "/vendor-dashboard"
-            : "/userhome"
-        );
-      }, 2000);
+      toast.success("✅ Login successful!", { position: "top-right" });
+      navigate("/userhome"); // Redirect to dashboard
     } catch (error) {
-      setError("Invalid credentials!");
-      toast.error("Invalid credentials!", { autoClose: 2000 });
+      setError("Invalid email or password");
+      toast.error("❌ Invalid credentials!",  { position: "top-right" });
     }
   };
 
-  // **🔹 Handle Signup**
   const handleSignUp = async (e) => {
     e.preventDefault();
-    if (!role) {
-      setError("Please select a role");
-      toast.error("Please select a role", { autoClose: 2000 });
-      return;
-    }
     try {
-      await axios.post("http://localhost:8080/api/users/register", {
-        fullName,
-        phoneNumber,
-        email,
-        password,
-        role,
-      });
-    
-      toast.success("Signup successful! Please log in.", { autoClose: 2000 });
-      setTimeout(() => setCurrentForm("login"), 2000);
+      const response = await axios.post("http://localhost:8080/api/users/register", userData);
+      toast.success("✅ Signup successful! Please log in.", { position: "top-right" });
+      setCurrentForm("login");
+      setUserData({ name: "", email: "", phone: "", password: "", role: "USER" }); // Reset form
     } catch (error) {
-      console.error("Signup error:", error.response?.data || error.message);
-      setError(error.response?.data?.message || "Signup failed! Try again.");
-      toast.error(error.response?.data?.message || "Signup failed! Try again.", { autoClose: 2000 });
+      setError("Registration failed");
+      toast.error("❌ Signup failed!", { position: "top-right" });
     }
-};  
+  };
+
+
   return (
-    <div className="container mt-5">
-      <ToastContainer />
-      {currentForm === "options" && (
-        <div className="text-center">
-          <button className="btn btn-primary m-2" onClick={() => setCurrentForm("signup")}>Sign up</button>
-          <button className="btn btn-success m-2" onClick={() => setCurrentForm("login")}>Log in</button>
-          <button className="btn btn-warning m-2" onClick={() => setCurrentForm("vendorLogin")}>Vendor Login</button>
-        </div>
-      )}
-      
-      {currentForm === "login" && (
-        <div className="card p-4 shadow w-50 mx-auto">
-          <h2 className="text-center">Log in</h2>
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="card p-4 shadow" style={{ width: "400px" }}>
+        {currentForm === "login" ? (
           <form onSubmit={handleLogin}>
-            <input type="email" className="form-control my-2" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" className="form-control my-2" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <h2 className="text-center mb-3">Login</h2>
+            {error && <div className="alert alert-danger">{error}</div>}
+            <div className="mb-3">
+              <input type="email" className="form-control" name="email" placeholder="Email" value={userData.email} onChange={handleChange} required />
+            </div>
+            <div className="mb-3">
+              <input type="password" className="form-control" name="password" placeholder="Password" value={userData.password} onChange={handleChange} required />
+            </div>
             <button type="submit" className="btn btn-primary w-100">Login</button>
-            {error && <div className="text-danger mt-2">{error}</div>}
+            <p className="mt-3 text-center">
+              Don't have an account? <span onClick={() => setCurrentForm("signup")} className="text-primary" style={{ cursor: "pointer" }}>Sign Up</span>
+            </p>
           </form>
-        </div>
-      )}
-
-      {currentForm === "signup" && (
-        <div className="card p-4 shadow w-50 mx-auto">
-          <h2 className="text-center">Sign up</h2>
+        ) : (
           <form onSubmit={handleSignUp}>
-            <input type="text" className="form-control my-2" placeholder="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
-            <input type="tel" className="form-control my-2" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-            <input type="email" className="form-control my-2" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" className="form-control my-2" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            
-            <h3 className="mt-3">Select Role:</h3>
-            <div className="form-check">
-              <input className="form-check-input" type="radio" value="user" checked={role === "user"} onChange={(e) => setRole(e.target.value)} />
-              <label className="form-check-label">User</label>
+            <h2 className="text-center mb-3">Sign Up</h2>
+            {error && <div className="alert alert-danger">{error}</div>}
+            <div className="mb-3">
+              <input type="text" className="form-control" name="name" placeholder="Name" value={userData.name} onChange={handleChange} required />
             </div>
-            <div className="form-check">
-              <input className="form-check-input" type="radio" value="vendor" checked={role === "vendor"} onChange={(e) => setRole(e.target.value)} />
-              <label className="form-check-label">Vendor</label>
+            <div className="mb-3">
+              <input type="email" className="form-control" name="email" placeholder="Email" value={userData.email} onChange={handleChange} required />
             </div>
-            <div className="form-check">
-              <input className="form-check-input" type="radio" value="admin" checked={role === "admin"} onChange={(e) => setRole(e.target.value)} />
-              <label className="form-check-label">Admin</label>
+            <div className="mb-3">
+              <input type="text" className="form-control" name="phone" placeholder="Phone" value={userData.phone} onChange={handleChange} required />
             </div>
-
-            <button type="submit" className="btn btn-success w-100 mt-3">Create account</button>
-            {error && <div className="text-danger mt-2">{error}</div>}
+            <div className="mb-3">
+              <input type="password" className="form-control" name="password" placeholder="Password" value={userData.password} onChange={handleChange} required />
+            </div>
+            <div className="mb-3">
+              <select className="form-control" name="role" value={userData.role} onChange={handleChange}>
+                <option value="USER">User</option>
+                <option value="ADMIN">Admin</option>
+              </select>
+            </div>
+            <button type="submit" className="btn btn-success w-100">Sign Up</button>
+            <p className="mt-3 text-center">
+              Already have an account? <span onClick={() => setCurrentForm("login")} className="text-primary" style={{ cursor: "pointer" }}>Login</span>
+            </p>
           </form>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
