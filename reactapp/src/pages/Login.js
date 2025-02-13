@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Login = () => {
-  const { login, user, isAdmin, isVendor } = useAuth();
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
@@ -17,56 +16,66 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      if (isAdmin()) {
-        navigate("/admin");
-      } else if (isVendor()) {
-        navigate("/vendor-dashboard");
-      } else {
-        navigate("/userhome");
-      }
+    const storedUser = localStorage.getItem("token");
+    if (storedUser) {
+      navigate("/userhome"); // Redirect to homepage if already logged in
     }
-  }, [user, isAdmin, isVendor, navigate]);
+  }, [navigate]);
 
-  const handleSubmit = (e) => {
+  // **🔹 Handle Login**
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    try {
+      const response = await axios.post("http://localhost:8080/api/users/login", {
+        email,
+        password,
+      });
 
-    if (
-      storedUser &&
-      storedUser.email === email &&
-      storedUser.password === password
-    ) {
-      setError("");
+      localStorage.setItem("token", response.data.token); 
+      localStorage.setItem("userRole", response.data.role); 
+
       toast.success("Login successful!", { autoClose: 2000 });
+
       setTimeout(() => {
         navigate(
-          storedUser.role === "admin"
+          response.data.role === "ADMIN"
             ? "/admin"
-            : storedUser.role === "vendor"
+            : response.data.role === "VENDOR"
             ? "/vendor-dashboard"
             : "/userhome"
         );
       }, 2000);
-    } else {
+    } catch (error) {
       setError("Invalid credentials!");
       toast.error("Invalid credentials!", { autoClose: 2000 });
     }
   };
 
-  const handleSignUp = (e) => {
+  // **🔹 Handle Signup**
+  const handleSignUp = async (e) => {
     e.preventDefault();
     if (!role) {
       setError("Please select a role");
       toast.error("Please select a role", { autoClose: 2000 });
       return;
     }
-    const newUser = { fullName, phoneNumber, email, password, role };
-    localStorage.setItem("user", JSON.stringify(newUser));
-    toast.success("Signup successful! Please log in.", { autoClose: 2000 });
-    setTimeout(() => setCurrentForm("login"), 2000);
-  };
-
+    try {
+      await axios.post("http://localhost:8080/api/users/register", {
+        fullName,
+        phoneNumber,
+        email,
+        password,
+        role,
+      });
+    
+      toast.success("Signup successful! Please log in.", { autoClose: 2000 });
+      setTimeout(() => setCurrentForm("login"), 2000);
+    } catch (error) {
+      console.error("Signup error:", error.response?.data || error.message);
+      setError(error.response?.data?.message || "Signup failed! Try again.");
+      toast.error(error.response?.data?.message || "Signup failed! Try again.", { autoClose: 2000 });
+    }
+};  
   return (
     <div className="container mt-5">
       <ToastContainer />
@@ -77,10 +86,11 @@ const Login = () => {
           <button className="btn btn-warning m-2" onClick={() => setCurrentForm("vendorLogin")}>Vendor Login</button>
         </div>
       )}
+      
       {currentForm === "login" && (
         <div className="card p-4 shadow w-50 mx-auto">
           <h2 className="text-center">Log in</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleLogin}>
             <input type="email" className="form-control my-2" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input type="password" className="form-control my-2" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <button type="submit" className="btn btn-primary w-100">Login</button>
@@ -88,6 +98,7 @@ const Login = () => {
           </form>
         </div>
       )}
+
       {currentForm === "signup" && (
         <div className="card p-4 shadow w-50 mx-auto">
           <h2 className="text-center">Sign up</h2>
@@ -96,6 +107,7 @@ const Login = () => {
             <input type="tel" className="form-control my-2" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
             <input type="email" className="form-control my-2" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input type="password" className="form-control my-2" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            
             <h3 className="mt-3">Select Role:</h3>
             <div className="form-check">
               <input className="form-check-input" type="radio" value="user" checked={role === "user"} onChange={(e) => setRole(e.target.value)} />
@@ -109,6 +121,7 @@ const Login = () => {
               <input className="form-check-input" type="radio" value="admin" checked={role === "admin"} onChange={(e) => setRole(e.target.value)} />
               <label className="form-check-label">Admin</label>
             </div>
+
             <button type="submit" className="btn btn-success w-100 mt-3">Create account</button>
             {error && <div className="text-danger mt-2">{error}</div>}
           </form>
