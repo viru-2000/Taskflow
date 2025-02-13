@@ -29,6 +29,7 @@ public class UserController {
         return userRepository.findAll();
     }
 
+//    http://localhost:8080/api/users/register
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         System.out.println("Received User: " + user);
@@ -44,7 +45,7 @@ public class UserController {
         User savedUser = userRepository.save(user);
         return ResponseEntity.ok(savedUser);
     }
-
+//    http://localhost:8080/api/users/login
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody User user) {
         Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
